@@ -1,6 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { registerIntroTools } from "./tools/intros.js";
+import { registerIntrosAgentInstructions } from "./agent-instructions.js";
 
 // accept username: npx nod-intros makaeel  OR  npx nod-intros --user makaeel
 const args = process.argv.slice(2);
@@ -23,6 +24,7 @@ const server = new McpServer({
 });
 
 registerIntroTools(server);
+registerIntrosAgentInstructions(server);
 
 async function main() {
   const transport = new StdioServerTransport();
