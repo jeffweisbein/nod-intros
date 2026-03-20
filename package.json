@@ -1,6 +1,6 @@
 {
   "name": "nod-intros",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "nod intros — agent-brokered warm introductions. an mcp skill for ai agents.",
   "type": "module",
   "main": "dist/index.js",

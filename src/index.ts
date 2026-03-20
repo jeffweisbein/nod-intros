@@ -2,16 +2,18 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { registerIntroTools } from "./tools/intros.js";
 
-// accept username from CLI args: npx nod-intros --user makaeel
+// accept username: npx nod-intros makaeel  OR  npx nod-intros --user makaeel
 const args = process.argv.slice(2);
 const userFlagIdx = args.indexOf("--user");
 if (userFlagIdx !== -1 && args[userFlagIdx + 1]) {
   process.env.NOD_USER_ID = args[userFlagIdx + 1];
+} else if (args.length > 0 && !args[0].startsWith("-")) {
+  process.env.NOD_USER_ID = args[0];
 }
 
 if (!process.env.NOD_USER_ID) {
-  console.error("usage: npx nod-intros --user <your-username>");
-  console.error("  e.g. npx nod-intros --user makaeel");
+  console.error("usage: npx nod-intros <username>");
+  console.error("  e.g. npx nod-intros makaeel");
   process.exit(1);
 }
 
